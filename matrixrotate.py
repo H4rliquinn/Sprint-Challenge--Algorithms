@@ -21,7 +21,7 @@ matrix = [[*line] for x in range(10)]
 
 def rotate_image(matrix):
     for x in range(len(matrix)//2):
-        for y in range(len(matrix[x])-1-x):
+        for y in range(len(matrix[x])-1-(2*x)):
             # temp=(matrix[len(matrix)-(x+1)][x])
             matrix[x][y+x] = '*'+str(matrix[x][x+y])
     return matrix
@@ -29,7 +29,13 @@ def rotate_image(matrix):
 
 # for x in matrix:
 #     print(x)
-
+tots = ""
 after = rotate_image(matrix)
-for x in after:
-    print(x)
+for x in range(len(after)):
+    for y in range(len(after[x])):
+        if str(after[x][y])[0] == '*':
+            tots += after[x][y]
+        else:
+            tots += ' '+str(after[x][y])
+    print(tots)
+    tots = ''
